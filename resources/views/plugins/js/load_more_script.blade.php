@@ -14,7 +14,7 @@
     }*/
 
     // Table Responsive Scroll Event for Load More
-    document.getElementById("accounts_table_res").addEventListener("scroll", function () {
+    document.getElementById("accounts_table_res").addEventListener("scroll", () => {
         var scrollTop = document.getElementById("accounts_table_res").scrollTop;
         var scrollHeight = document.getElementById("accounts_table_res").scrollHeight;
         var offsetHeight = document.getElementById("accounts_table_res").offsetHeight;
