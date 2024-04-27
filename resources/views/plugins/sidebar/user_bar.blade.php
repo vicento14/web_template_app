@@ -45,7 +45,7 @@
                 Load More
               </p>
             </a>
-        </li> 
+        </li>
         <li class="nav-item">
           @if (url()->current() == route('user/table_switching'))
             <a href="{{ route('user/table_switching') }}" class="nav-link active">
@@ -57,7 +57,19 @@
                 Table Switching
               </p>
             </a>
-        </li> 
+        </li>
+        <li class="nav-item">
+          @if (url()->current() == route('user/ts_lm'))
+            <a href="{{ route('user/ts_lm') }}" class="nav-link active">
+          @else
+            <a href="{{ route('user/ts_lm') }}" class="nav-link">
+          @endif
+              <i class="nav-icon far fa-file-alt"></i>
+              <p>
+                Table Switch + Load More
+              </p>
+            </a>
+        </li>
         <li class="nav-item">
           @if (url()->current() == route('user/keyup_search'))
             <a href="{{ route('user/keyup_search') }}" class="nav-link active">
@@ -69,7 +81,7 @@
                 Keyup Search
               </p>
             </a>
-        </li> 
+        </li>
         @include('plugins/sidebar/logout')
       </ul>
     </nav>

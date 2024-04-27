@@ -64,6 +64,10 @@ Route::middleware([CheckUsernameSession::class])->group(function () {
             return view('table_switching');
         })->name('user/table_switching');
 
+        Route::get('user/ts_lm', function (Request $request) {
+            return view('ts_lm');
+        })->name('user/ts_lm');
+
         Route::get('user/keyup_search', function (Request $request) {
             return view('keyup_search');
         })->name('user/keyup_search');
@@ -100,6 +104,14 @@ Route::get('accounts/searchlastpagek','UserAccountsController@searchLastPageK')-
 // Table Switching
 Route::get('tts/loadtt1','TTSController@loadTT1')->name('tts/loadtt1');
 Route::get('tts/loadtt2','TTSController@loadTT2')->name('tts/loadtt2');
+
+// Table Switching + Load More
+Route::get('ttslm/counttt1data','TTSLMController@countTT1Data')->name('ttslm/counttt1data');
+Route::get('ttslm/counttt2data/{c1?}','TTSLMController@countTT2Data')->name('ttslm/counttt2data');
+Route::get('ttslm/loadtt1data','TTSLMController@loadTT1Data')->name('ttslm/loadtt1data');
+Route::get('ttslm/loadtt2data','TTSLMController@loadTT2Data')->name('ttslm/loadtt2data');
+Route::get('ttslm/lastpagett1data','TTSLMController@lastPageTT1Data')->name('ttslm/lastpagett1data');
+Route::get('ttslm/lastpagett2data','TTSLMController@lastPageTT2Data')->name('ttslm/lastpagett2data');
 
 // Export
 Route::get('export/export_data2/{employee_no?}/{full_name?}','ExportController@export_data2')->name('export/export_data2');
