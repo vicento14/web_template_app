@@ -2,7 +2,7 @@
     <strong>Copyright &copy; 2023. Developed by: Vince Dale Alcantara</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 1.0.0
+      <b>Version</b> 1.0.2
     </div>
   </footer>
 
@@ -10,6 +10,7 @@
 @include('modals/new_account')
 @include('modals/update_account')
 @include('modals/import_accounts')
+@include('modals/confirm_delete_account_selected')
 
 <!-- jQuery -->
 <script src="{{asset('/plugins/jquery/dist/jquery.min.js')}}"></script>
@@ -27,8 +28,10 @@
 <script src="{{asset('/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('/dist/js/adminlte.js')}}"></script>
-<!-- AdminLTE App -->
+<!-- Popup Center -->
 <script src="{{asset('/dist/js/popup_center.js')}}"></script>
+<!-- Serialize -->
+<script src="{{asset('/dist/js/serialize.js')}}"></script>
 
 <!-- AJAX CSRF -->
 <script type="text/javascript">

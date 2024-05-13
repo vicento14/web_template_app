@@ -46,6 +46,18 @@
               </p>
             </a>
         </li>
+        <li class="nav-item">
+          @if (url()->current() == route('admin/sample1'))
+            <a href="{{ route('admin/sample1') }}" class="nav-link active">
+          @else
+            <a href="{{ route('admin/sample1') }}" class="nav-link">
+          @endif
+              <i class="nav-icon fas fa-user-cog"></i>
+              <p>
+                Sample 1
+              </p>
+            </a>
+        </li>
         @include('plugins/sidebar/logout')
       </ul>
     </nav>
