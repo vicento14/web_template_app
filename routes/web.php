@@ -47,6 +47,10 @@ Route::middleware([CheckUsernameSession::class])->group(function () {
             return view('accounts');
         })->name('admin/accounts');
 
+        Route::get('admin/sample1', function (Request $request) {
+            return view('sample1');
+        })->name('admin/sample1');
+
     });
 
     // User
@@ -100,6 +104,15 @@ Route::get('accounts/searchpagek','UserAccountsController@searchPageK')->name('a
 Route::get('accounts/searchpaginationpagep','UserAccountsController@searchPaginationPageP')->name('accounts/searchpaginationpagep');
 Route::get('accounts/searchlastpagel','UserAccountsController@searchLastPageL')->name('accounts/searchlastpagel');
 Route::get('accounts/searchlastpagek','UserAccountsController@searchLastPageK')->name('accounts/searchlastpagek');
+
+// Sample 1
+Route::get('sample1/load','Sample1Controller@load')->name('sample1/load');
+Route::get('sample1/search','Sample1Controller@search')->name('sample1/search');
+Route::post('sample1/insert','Sample1Controller@insert')->name('sample1/insert');
+Route::post('sample1/update','Sample1Controller@update')->name('sample1/update');
+Route::post('sample1/delete','Sample1Controller@delete')->name('sample1/delete');
+Route::post('sample1/deleteSelected','Sample1Controller@deleteSelected')->name('sample1/deleteSelected');
+Route::post('sample1/import3','Sample1Controller@import3')->name('sample1/import3');
 
 // Table Switching
 Route::get('tts/loadtt1','TTSController@loadTT1')->name('tts/loadtt1');
