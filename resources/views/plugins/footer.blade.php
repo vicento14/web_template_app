@@ -30,6 +30,8 @@
 <script src="{{asset('/dist/js/adminlte.js')}}"></script>
 <!-- Popup Center -->
 <script src="{{asset('/dist/js/popup_center.js')}}"></script>
+<!-- Export CSV -->
+<script src="{{asset('/dist/js/export_csv.js')}}"></script>
 <!-- Serialize -->
 <script src="{{asset('/dist/js/serialize.js')}}"></script>
 
