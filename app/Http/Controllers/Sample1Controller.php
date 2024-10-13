@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UserAccounts;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Exception;
 
 class Sample1Controller extends Controller
 {
@@ -99,19 +101,40 @@ class Sample1Controller extends Controller
         $id_arr = [];
         $id_arr = $request->input('id_arr');
 
-        $count = count($id_arr);
-        foreach ($id_arr as $id) {
-            $deleted = UserAccounts::where('id', $id)->delete();
-
-            if ($deleted > 0) {
-                $count--;
-            }
+        // Check if the array is not empty
+        if (empty($id_arr)) {
+            return response()->json(['message' => 'No IDs provided'], 400);
         }
 
-        if ($count == 0) {
+        // Chunk the IDs to avoid memory issues with large datasets
+        $chunks = array_chunk($id_arr, 1000); // Adjust the chunk size as needed
+
+        $deletedCount = 0;
+        $isTransactionActive = false;
+
+        try {
+            // Begin transaction
+            DB::beginTransaction();
+            $isTransactionActive = true;
+
+            foreach ($chunks as $chunk) {
+                $deleted = UserAccounts::whereIn('id', $chunk)->delete();
+                $deletedCount += $deleted;
+            }
+
+            // Commit the transaction
+            DB::commit();
+            $isTransactionActive = false;
             echo 'success';
-        } else {
-            echo 'error';
+            // return response()->json(['message' => 'success', 'deleted_count' => $deletedCount]);
+        } catch (Exception $e) {
+            // Rollback the transaction if something went wrong
+            if ($isTransactionActive) {
+                DB::rollBack();
+                $isTransactionActive = false;
+            }
+            echo 'error: ' . $e->getMessage();
+            // return response()->json(['message' => 'error: ' . $e->getMessage()], 500);
         }
     }
 
